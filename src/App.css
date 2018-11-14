@@ -1,5 +1,9 @@
+body{
+  font-family: 'Ubuntu', sans-serif;
+}
 .App {
   text-align: center;
+  position: relative;
 }
 
 .App-logo {
@@ -29,4 +33,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.login-button-container{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.login-button{
+  color: #61dafb;
+  background-color: transparent;
+  border: 1px solid #4c4c4c;
+  padding: 10px 20px;
+  border-radius: 17px;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
+}
+
+.login-button:hover{
+  cursor: pointer;
 }
