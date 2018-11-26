@@ -1,3 +1,7 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body{
   font-family: 'Ubuntu', sans-serif;
 }
@@ -55,4 +59,56 @@ body{
 
 .login-button:hover{
   cursor: pointer;
+}
+
+.menu{
+  position: fixed;
+  color: #61dafb;
+  background-color: transparent;
+  border: 1px solid #4c4c4c;
+  padding: 20px 30px;
+  border-radius: 17px;
+  top: 70px;
+  right: -250px;
+  opacity: 0;
+  transition: right 0.5s, opacity 1.5s;
+}
+.menu-active{
+  opacity: 1;
+  right: 20px;
+}
+
+.menu form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.submit-button{
+    color: #61dafb;
+    background-color: transparent;
+    border: 1px solid #4c4c4c;
+    padding: 10px 20px;
+    border-radius: 17px;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    margin-top: 30px;
+}
+
+.menu form label{
+  display: flex;
+  flex-direction: column;
+  font-weight: 300;
+  outline: none;
+}
+.menu form label input{
+  margin: 10px 0;
+  border: none;
+  font-family: 'Ubuntu', sans-serif;
+  background-color: transparent;
+  border-bottom: 1px solid #4c4c4c;
+  outline: none;
+  color: #61dafb;
 }

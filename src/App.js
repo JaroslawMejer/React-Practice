@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Greeting from './components/greetings.js'
 import Clock from './components/time.js'
+import Login from './components/login.js'
 
 class App extends Component {
   constructor(props) {
@@ -15,29 +16,16 @@ class App extends Component {
     }
     this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.passName = this.passName.bind(this)
   }
-  handleFirstNameChange(event) {
-    console.log('Firstname: ' + event.target.value);
+  passName(firstName, lastName){
+    console.log('First name: ' + firstName + ' , Last name:' + lastName)
     this.setState({
-      firstName: event.target.value
+      firstName: firstName,
+      lastName: lastName,
+      isLoggedIn: true,
+      viewForm: false
     })
-  }
-  handleLastNameChange(event) {
-    console.log('Lastname: ' + event.target.value);
-    this.setState({
-      lastName: event.target.value
-    })
-  }
-  handleSubmit(event) {
-    console.log('A name was submitted: ' +this.state.firstName + ' ' + this.state.lastName);
-    this.setState({
-      viewForm: false,
-      isLoggedIn: true
-    })
-    event.preventDefault();
   }
   handleLoginClick() {
     this.setState({
@@ -47,11 +35,10 @@ class App extends Component {
   handleLogoutClick() {
     this.setState({isLoggedIn: false});
   }
-  render() {
-    const isLoggedIn = this.state.isLoggedIn
+  render() { 
     let loggedGreeting;
     let loggedButton;
-    if (isLoggedIn) {
+    if (this.state.isLoggedIn) {
       loggedGreeting = <p>Hello, <Greeting Fname={this.state.firstName} Lname={this.state.lastName} /> </p>
       loggedButton = <button className="login-button" onClick={this.handleLogoutClick}>Logout</button>
     } else {
@@ -61,19 +48,7 @@ class App extends Component {
     return (
       <div className="App">
       {(this.state.viewForm) ?
-        <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            First Name:
-            <input type="text" value={this.state.firstName} onChange={this.handleFirstNameChange} />
-          </label>
-          <label>
-            Last Name:
-            <input type="text" value2={this.state.lastName} onChange={this.handleLastNameChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </div> : ''}
+        <Login chooseDisplay ={this.state.viewForm} callbackName = {this.passName} callbackForm = {this.loginFormSubmit} /> : ''}
       
 
         <div className="login-button-container">
